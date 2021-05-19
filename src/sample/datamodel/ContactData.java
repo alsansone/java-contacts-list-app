@@ -29,7 +29,7 @@ public class ContactData {
     private static final String EMAIL = "email";
     private static final String NOTES = "notes";
 
-    private ObservableList<Contact> contacts;
+    private final ObservableList<Contact> contacts;
 
     public ContactData() {
         // initialize the contacts list
@@ -145,9 +145,8 @@ public class ContactData {
             eventWriter.add(contactsStartElement);
             eventWriter.add(end);
 
-            for (Contact contact: contacts) {
+            for (Contact contact: contacts)
                 saveContact(eventWriter, eventFactory, contact);
-            }
 
             eventWriter.add(eventFactory.createEndElement("", "", "contacts"));
             eventWriter.add(end);
